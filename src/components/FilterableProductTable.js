@@ -3,14 +3,27 @@ import PropTypes from "prop-types";
 import SearchBar from "./SearchBar";
 import ProductTable from "./ProductTable";
 
-const filterableProductTable = props => (
-  <div>
-    <SearchBar />
-    <ProductTable products={props.products} />
-  </div>
-);
+class FilterableProductTable extends React.Component {
+  constructor(props) {
+    super(props);
 
-filterableProductTable.propTypes = {
+    this.state = {
+      filterText: "",
+      showOnlyProductsInStock: false
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar filterText={this.state.filterText} showOnlyProductsInStock={this.state.showOnlyProductsInStock} />
+        <ProductTable products={this.props.products} />
+      </div>
+    );
+  }
+}
+
+FilterableProductTable.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.string,
@@ -18,4 +31,4 @@ filterableProductTable.propTypes = {
   }))
 };
 
-export default filterableProductTable;
+export default FilterableProductTable;
