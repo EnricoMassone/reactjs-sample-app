@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ProductTable from './ProductTable';
+import SearchBar from "./SearchBar";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="container">
+      <SearchBar />
       <ProductTable products={products} />
     </div>
   );
