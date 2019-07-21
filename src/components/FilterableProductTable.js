@@ -16,8 +16,14 @@ class FilterableProductTable extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar filterText={this.state.filterText} showOnlyProductsInStock={this.state.showOnlyProductsInStock} />
-        <ProductTable products={this.props.products} />
+        <SearchBar
+          filterText={this.state.filterText}
+          showOnlyProductsInStock={this.state.showOnlyProductsInStock} />
+
+        <ProductTable
+          filterText={this.state.filterText}
+          showOnlyProductsInStock={this.state.showOnlyProductsInStock}
+          products={this.props.products} />
       </div>
     );
   }

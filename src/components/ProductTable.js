@@ -5,7 +5,17 @@ import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
 
 const productTable = (props) => {
-  const productsByCategory = groupBy(props.products, product => product.category);
+  let filteredProducts = props.products;
+
+  if (props.filterText) {
+    filteredProducts = filteredProducts.filter(product => product.name.includes(props.filterText));
+  }
+
+  if (props.showOnlyProductsInStock) {
+    filteredProducts = filteredProducts.filter(product => product.stocked);
+  }
+
+  const productsByCategory = groupBy(filteredProducts, product => product.category);
 
   return (
     <table>
@@ -44,8 +54,9 @@ productTable.propTypes = {
     price: PropTypes.string,
     stocked: PropTypes.bool,
     category: PropTypes.string
-  }))
-
+  })),
+  filterText: PropTypes.string,
+  showOnlyProductsInStock: PropTypes.bool
 };
 
 export default productTable;
