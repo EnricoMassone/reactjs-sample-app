@@ -4,21 +4,33 @@ import SearchBar from "./SearchBar";
 import ProductTable from "./ProductTable";
 
 class FilterableProductTable extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    filterText: "",
+    showOnlyProductsInStock: false
+  };
 
-    this.state = {
-      filterText: "",
-      showOnlyProductsInStock: false
-    };
-  }
+  updateFilterText = e => {
+    const filterText = e.target.value;
+    this.setState({
+      filterText
+    });
+  };
+
+  updateShowOnlyProductsInStock = e => {
+    const showOnlyProductsInStock = e.target.checked;
+    this.setState({
+      showOnlyProductsInStock
+    });
+  };
 
   render() {
     return (
       <div>
         <SearchBar
           filterText={this.state.filterText}
-          showOnlyProductsInStock={this.state.showOnlyProductsInStock} />
+          showOnlyProductsInStock={this.state.showOnlyProductsInStock}
+          onFilterTextChanged={this.updateFilterText}
+          onShowOnlyProductsInStockChanged={this.updateShowOnlyProductsInStock} />
 
         <ProductTable
           filterText={this.state.filterText}

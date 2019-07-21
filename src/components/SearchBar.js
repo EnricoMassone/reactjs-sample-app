@@ -2,17 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const searchBar = props => (
-  <div>
-    <input type="text" placeholder="Search..." value={props.filterText} /> <br />
+  <form>
+    <input
+      type="text"
+      placeholder="Search..."
+      value={props.filterText}
+      onChange={props.onFilterTextChanged} />
+
+    <br />
+
     <label>
-      <input type="checkbox" className="no-left-margin" checked={props.showOnlyProductsInStock} /> Only show products in stock
+      <input
+        type="checkbox"
+        className="no-left-margin"
+        checked={props.showOnlyProductsInStock}
+        onChange={props.onShowOnlyProductsInStockChanged} /> Only show products in stock
     </label>
-  </div>
+  </form>
 );
 
 searchBar.propTypes = {
   filterText: PropTypes.string,
-  showOnlyProductsInStock: PropTypes.bool
+  showOnlyProductsInStock: PropTypes.bool,
+  onFilterTextChanged: PropTypes.func,
+  onShowOnlyProductsInStockChanged: PropTypes.func,
 };
 
 export default searchBar;
