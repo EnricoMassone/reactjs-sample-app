@@ -8,7 +8,7 @@ const productTable = (props) => {
   let filteredProducts = props.products;
 
   if (props.filterText) {
-    filteredProducts = filteredProducts.filter(product => product.name.includes(props.filterText));
+    filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().includes(props.filterText.toLowerCase()));
   }
 
   if (props.showOnlyProductsInStock) {
