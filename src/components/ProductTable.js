@@ -11,7 +11,7 @@ const productTable = (props) => {
     <table>
 
       <thead>
-        <tr>
+        <tr className="text-left-aligned">
           <th>Name</th>
           <th>Price</th>
         </tr>

@@ -6,3 +6,7 @@
 .text-left-aligned {
   text-align: left;
 }
+
+.text-danger {
+  color: red;
+}
